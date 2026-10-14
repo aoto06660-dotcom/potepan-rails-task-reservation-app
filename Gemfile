@@ -55,3 +55,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise"
+
+gem "json", "~> 2.9", "< 3.0"
