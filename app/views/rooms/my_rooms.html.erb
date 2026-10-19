@@ -1,0 +1,19 @@
+<% @rooms.each do |room| %>
+  <div>
+    <% if room.image.attached? %>
+      <%= image_tag room.image, width: 200 %>
+    <% end %>
+
+    <h3><%= room.name %></h3>
+    <p><%= room.address %></p>
+    <p><%= room.bio %></p>
+    <p><%= number_to_currency(room.fee, unit: "¥", precision: 0) %>~</p>
+
+    <%= link_to "詳細はこちら", room_path(room) %>
+  </div>
+
+  <% if @rooms.empty? %>
+    <p>登録した施設はありません</p>
+  <% end %>
+  
+<% end %>

@@ -1,0 +1,59 @@
+<div class="container">
+  <% if user_signed_in? && @room.user_id == current_user.id %>
+    <div>
+      <%= link_to "←戻る", rooms_path %>
+      <%= link_to "編集", edit_room_path(@room) %>
+    </div>
+  <% end %>
+
+  <div>
+    <% if @room.image.attached? %>
+      <%= image_tag @room.image, width: 300 %>
+    <% end %>
+
+  </div>
+
+  <div>
+    <h2><%= @room.name %></h2>
+    <p><%= @room.name %></p>
+    <p>¥<%= @room.fee %>~</p>
+    <p><%=  @room.address %></p>
+    <p><%= @room.bio %></p>
+    
+    <div>
+      <%= form_with model: @reservation,
+                    url: confirm_room_reservations_path(@room),
+                    method: :post,
+                    data: { turbo: false } do |f| %>
+        <div>
+          <%= f.label :check_in, "チェックイン" %>
+          <%= f.date_field :check_in %>
+        </div>
+
+        <div>
+          <%= f.label :check_out, "チェックアウト" %>
+          <%= f.date_field :check_out %>
+        </div>
+
+        <div>
+          <%= f.label :guest, "人数" %>
+          <%= f.number_field :guest %>
+        </div>
+        
+        <% if user_signed_in? %>
+          <%= f.submit "予約する" %>            
+        <% end %>
+      <% end %>
+
+    </div>
+
+  </div>
+
+<% if user_signed_in? && @room.user.id == current_user.id %>
+    <%= button_to "削除",
+                    room_path(@room),
+                    method: :delete,
+                    data: { turbo_confirm: "本当に削除しますか？" } %>
+<% end %>
+
+</div>

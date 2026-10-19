@@ -1,8 +1,26 @@
 Rails.application.routes.draw do
+  resources :rooms do
+    collection do
+      get :my_rooms
+    end
+  
+
+    resources :reservations, only: [:create] do
+      collection do
+        post :confirm
+      end
+    end
+  end
+
+  resources :reservations, only: [:index]
+  
+  
   devise_for :users
 
   get "home/index"
   root "home#index"
+
+  resource :profile, only: [:edit, :update]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

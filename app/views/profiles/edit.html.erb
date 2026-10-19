@@ -1,0 +1,33 @@
+<h2>プロフィール</h2>
+<%= form_with model: @user, url: profile_path do |f| %>
+
+  <div>
+    <%= f.label :avatar, "アイコン画像" %>
+    <%= f.file_field :avatar %>
+  </div>
+      
+  <div>
+    <%= f.label :name, "名前" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :bio, "自己紹介" %>
+    <%= f.text_area :bio %>
+  </div>
+
+  <div>
+    <%= f.submit "保存" %>
+  </div>
+  
+<% end %>
+
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= ms  g %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+

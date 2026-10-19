@@ -1,0 +1,27 @@
+<h2>予約済み一覧</h2>
+
+<div>
+  <p>画像</p>
+  <p>施設名</p>
+  <p>紹介文</p>
+  <p>合計料金</p>
+  <p>チェックイン</p>
+  <p>チェックアウト</p>
+  <p>予約確定日時</p>
+</div>
+
+<div>
+  <% @reservations.each do |reservation| %>
+    <% nights = (reservation.check_out - reservation.check_in).to_i %>
+    <% total_price = nights * reservation.room.fee %>
+    <div>
+      <p><%= reservation.room.image %></p>
+      <p><%= reservation.room.name %></p>
+      <p><%= reservation.room.bio %></p>
+      <p>¥<%= total_price %></p>
+      <p><%= reservation.check_in %></p> 
+      <p><%= reservation.check_out %></p>
+      <p><%= reservation.created_at %></p>
+    </div>
+  <% end %>
+</div>

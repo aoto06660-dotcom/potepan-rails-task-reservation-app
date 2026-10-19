@@ -3,8 +3,9 @@ class Reservation < ApplicationRecord
   belongs_to :room
 
   validates :check_in, presence: true
+  validates :check_out, presence: true
 
-  validate :check_in_cannnot_be_in_the_past
+  validate :check_in_cannot_be_in_the_past
   validate :check_out_is_after_check_in
   
   validates :guest, presence: true,
@@ -15,7 +16,7 @@ class Reservation < ApplicationRecord
   
   private
 
-  def check_in_cannnot_be_in_the_past
+  def check_in_cannot_be_in_the_past
     return if check_in.blank?
     if Date.current > check_in
       errors.add(:check_in, "は今日以降の日付にしてください")

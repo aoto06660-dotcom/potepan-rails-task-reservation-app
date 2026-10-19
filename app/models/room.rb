@@ -2,6 +2,8 @@ class Room < ApplicationRecord
   belongs_to :user
   has_many :reservations
 
+  has_one_attached :image
+
   validates :name, presence: true
   validates :bio, presence: true
   validates :fee, presence: true,
@@ -10,5 +12,5 @@ class Room < ApplicationRecord
                     greater_than_or_equal_to: 1
                   }
   validates :address, presence: true
-
+  
 end

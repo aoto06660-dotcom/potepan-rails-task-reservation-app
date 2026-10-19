@@ -1,0 +1,38 @@
+<%= form_with model: room do |f| %>
+  <% if room.errors.any? %>
+    <ul>
+      <% room.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :name, "施設名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :bio, "施設詳細" %>
+    <%= f.text_area :bio %>
+  </div>
+
+  <div>
+    <%= f.label :fee, "料金" %>
+    <%= f.number_field :fee %>
+  </div>
+
+  <div>
+    <%= f.label :address, "住所" %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div>
+    <%= f.label :image, "施設画像" %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit "保存" %>
+  
+  <%= link_to "キャンセル", rooms_path %>
+<% end %>

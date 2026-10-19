@@ -1,0 +1,26 @@
+<div>
+  <%= form_with url: rooms_path, method: :get do |f| %>
+    <%= f.text_field :address, value: params[:address] %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>
+
+<h2>施設一覧</h2>
+
+<% @rooms.each do |room| %>
+  <div>
+    <% if room.image.attached? %>
+      <%= image_tag room.image, width: 200 %>
+    <% end %>
+
+    <h3><%= room.name %></h3>
+    <p><%= room.address %></p>
+    <p><%= room.bio %></p>
+    <p>¥<%= room.fee %>~</p>
+
+    <%= link_to "詳細はこちら", room_path(room) %>
+  </div>
+<% end %>
+
+
+                  
