@@ -1,19 +1,40 @@
-<% @rooms.each do |room| %>
-  <div>
-    <% if room.image.attached? %>
-      <%= image_tag room.image, width: 200 %>
-    <% end %>
+<h2>登録済み一覧</h2>
 
-    <h3><%= room.name %></h3>
-    <p><%= room.address %></p>
-    <p><%= room.bio %></p>
-    <p><%= number_to_currency(room.fee, unit: "¥", precision: 0) %>~</p>
+<% if @rooms.any? %>
 
-    <%= link_to "詳細はこちら", room_path(room) %>
-  </div>
+  <% @rooms.each do |room| %>
 
-  <% if @rooms.empty? %>
-    <p>登録した施設はありません</p>
+    <div>
+      <table>
+        <tr>
+          <th>画像</th>
+          <td>
+            <% if room.image.attached? %>
+              <%= image_tag room.image, width: 200 %>
+            <% end %>
+          </td>
+
+          <th>施設名</th>
+          <td><%= room.name %></td>
+
+          <th>紹介文</th>
+          <td><%= room.bio %></td>
+
+          <th>料金</th>
+          <td><%= number_to_currency(room.fee, unit: "¥", precision: 0) %>~</td>
+          
+          <th>作成日</th>
+          <td><%= room.created_at.strftime("%Y/%m/%d %H/%M") %></td>
+        
+        </tr>
+      </table> 
+      
+      <%= link_to "詳細はこちら", room_path(room) %>
+    </div>
   <% end %>
-  
+
+<% else %>
+
+  <p>登録した施設はありません</p>
+
 <% end %>

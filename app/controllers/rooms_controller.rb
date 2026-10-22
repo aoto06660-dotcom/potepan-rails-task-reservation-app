@@ -7,6 +7,15 @@ class RoomsController < ApplicationController
     else
       @rooms = Room.all
     end
+
+    if params[:keyword].present?
+      keyword = "%#{Room.sanitize_sql_like(params[:keyword])}%"
+
+      @rooms = @rooms.where(
+        "name LIKE :keyword OR bio LIKE :keyword",
+        keyword: keyword
+      )
+    end
   end
 
   def show

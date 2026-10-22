@@ -1,11 +1,17 @@
 <div>
   <%= form_with url: rooms_path, method: :get do |f| %>
-    <%= f.text_field :address, value: params[:address] %>
+    <%= f.text_field :address,
+                      value: params[:address],
+                      placeholder: "エリア名を入力" %>
+
+    <%= f.text_field :keyword,
+                      value: params[:keyword],
+                      placeholder: "キーワード名を入力" %>
     <%= f.submit "検索" %>
   <% end %>
 </div>
 
-<h2>施設一覧</h2>
+<h2><%= @rooms.count %>件が見つかりました</h2>
 
 <% @rooms.each do |room| %>
   <div>

@@ -1,0 +1,23 @@
+<h2>プロフィール</h2>
+
+<%= link_to "編集", edit_profile_path %>
+
+<div>
+  <div>
+    <p>アイコン画像</p>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, width: 150 %>
+    <% end %>
+  </div>
+
+  <div>
+    <p>名前</p>
+    <p><%= @user.name %></p>
+  </div>
+
+  <div>
+    <p>自己紹介</p>
+    <p><%= @user.bio %></p>
+  </div>
+</div>
+

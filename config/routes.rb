@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   end
 
   resources :reservations, only: [:index]
+
+  resource :account, only: [:show]
   
   
   devise_for :users
@@ -20,7 +22,7 @@ Rails.application.routes.draw do
   get "home/index"
   root "home#index"
 
-  resource :profile, only: [:edit, :update]
+  resource :profile, only: [:edit, :update, :show]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

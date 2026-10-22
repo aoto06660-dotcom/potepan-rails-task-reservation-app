@@ -1,0 +1,21 @@
+<h2>設定</h2>
+
+<div>
+  <div>
+    <h2><%= link_to "アカウント", account_path %></h2>
+    <h2><%= link_to "プロフィール", profile_path %></h2>
+  </div>
+  
+  <div>
+    <p>メールアドレス</p>
+    <p><%= @user.email %></p>
+  </div>
+
+  <div>
+    <p>パスワード</p>
+    <p>*********</p>
+  </div>
+
+</div>
+
+<%= link_to "編集", edit_user_registration_path %>

@@ -23,8 +23,11 @@
   </div>
 
   <div>
+    <% nights = (@reservation.check_out - @reservation.check_in).to_i %>
+    <% total_price = nights * @reservation.room.fee * @reservation.guest %>
+
     <p>お支払い金額</p>
-    #金額の表示
+    <p>¥<%= total_price %></p>
   </div>
 
   <p>上記内容で正しければ「確定」ボタンを押してください<p>

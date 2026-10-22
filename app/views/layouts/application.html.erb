@@ -18,6 +18,40 @@
   </head>
 
   <body>
+    <div>
+      <h2>Potepan Share</h2>
+
+      <% if user_signed_in? %>
+        <details>
+          <summary>
+            <% if current_user.avatar.attached? %>
+              <%= image_tag current_user.avatar, width: 40 %>
+            <% end %>
+
+            <%= current_user.name %>
+          </summary>
+
+          <div>
+            <%= link_to "施設の新規登録", new_room_path %>
+
+            <hr>
+
+            <p><%= link_to "予約済み一覧", reservations_path %></p>
+            <p><%= link_to "登録済み一覧", my_rooms_rooms_path %></p>
+            <p><%= link_to "アカウント設定", account_path %></p>
+
+            <hr>
+
+            <%= link_to "ログアウト", 
+                        destroy_user_session_path,
+                        data: { turbo_method: :delete } %>
+          </div>
+        </details>
+      <% else %>
+        <%= link_to "ログイン", new_user_session_path %>
+        <%= link_to "新規登録", new_user_registration_path %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
