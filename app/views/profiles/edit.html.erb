@@ -1,33 +1,47 @@
-<h2>プロフィール</h2>
-<%= form_with model: @user, url: profile_path do |f| %>
+<div class="container-fluid px-4 py-5">
 
-  <div>
-    <%= f.label :avatar, "アイコン画像" %>
-    <%= f.file_field :avatar %>
+  <div class="row g-3">
+
+    <div class="col-md-3">
+      <%= render "shared/settings_sidebar", active_menu: "profile" %>
+    </div>
+
+    <div class="col-md-9">
+
+      <h2 class="mb-4 border-bottom pb-3 mb-4">プロフィール</h2>
+
+      <%= form_with model: @user, url: profile_path do |f| %>
+
+        <div class="profile-edit-row">
+          <%= f.label :avatar, "アイコン画像" %>
+          <%= f.file_field :avatar %>
+        </div>
+            
+        <div class="profile-edit-row">
+          <%= f.label :name, "名前" %>
+          <%= f.text_field :name %>
+        </div>
+
+        <div class="profile-edit-row">
+          <%= f.label :bio, "自己紹介" %>
+          <%= f.text_area :bio %>
+        </div>
+
+        <div class="profile-edit-actions">
+          <%= link_to "キャンセル", profile_path, class: "text-decoration-none" %>
+          <%= f.submit "保存", class: "btn btn-danger" %>
+        </div>
+        
+      <% end %>
+
+      <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
-      
-  <div>
-    <%= f.label :name, "名前" %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div>
-    <%= f.label :bio, "自己紹介" %>
-    <%= f.text_area :bio %>
-  </div>
-
-  <div>
-    <%= f.submit "保存" %>
-  </div>
-  
-<% end %>
-
-<% if @user.errors.any? %>
-  <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
-
+</div>
 

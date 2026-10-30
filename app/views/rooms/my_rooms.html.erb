@@ -1,40 +1,90 @@
-<h2>登録済み一覧</h2>
+<div class="created-room-container px-4 py-5">
 
-<% if @rooms.any? %>
+  <h2>登録済み一覧</h2>
 
-  <% @rooms.each do |room| %>
+  <div>
+    <table class="table table hover align-middle">
 
-    <div>
-      <table>
-        <tr>
+      <thead>
+        <tr class="text-nowrap">
           <th>画像</th>
-          <td>
-            <% if room.image.attached? %>
-              <%= image_tag room.image, width: 200 %>
-            <% end %>
-          </td>
-
           <th>施設名</th>
-          <td><%= room.name %></td>
-
           <th>紹介文</th>
-          <td><%= room.bio %></td>
-
           <th>料金</th>
-          <td><%= number_to_currency(room.fee, unit: "¥", precision: 0) %>~</td>
-          
           <th>作成日</th>
-          <td><%= room.created_at.strftime("%Y/%m/%d %H/%M") %></td>
-        
+          <th></th>
         </tr>
-      </table> 
-      
-      <%= link_to "詳細はこちら", room_path(room) %>
-    </div>
+      </thead>
+
+      <% if @rooms.any? %>
+
+      <% @rooms.each do |room| %>
+
+          <tbody>
+            <tr>
+              <td>
+                <% if room.image.attached? %>
+                  <%= image_tag room.image, width: 120 %>
+                <% else %>
+                  <%= image_tag "no_image.png", width: 120 %>
+                <% end %>
+              </td>
+
+              <td>
+                <%= link_to room.name, room_path(room) %>
+              </td>
+
+              <td calss="reservation-bio">
+                <%= room.bio %>
+              </td>
+              
+              <td>
+                <%= number_to_currency(room.fee, unit: "¥", precision: 0) %>~
+              </td>
+              
+              <td>
+                <%= room.created_at.strftime("%Y/%m/%d %H/%M") %>
+              </td>
+
+              <td>
+                <div class="dropdown">
+
+                <button
+                    class="btn btn-light"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    aria-label="予約の操作"
+                >
+                  &#8942;
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li class"d-flex flex-column align-items-center">
+                    <%= link_to "編集", 
+                          edit_room_path(room),
+                          class: "dropdown-item text-center" %>
+
+                    <%= button_to "削除",
+                        room_path(room),
+                        method: :delete,
+                        class: "dropdown-item text-center text-danger",
+                        form_class: "w-100",
+                        data: { turbo_confirm: "本当に削除しますか？" } %>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        <% end %>                
+      </table>
+    
+  <% else %>
+
+    <p>登録した施設はありません</p>
+
   <% end %>
 
-<% else %>
+  </div>
 
-  <p>登録した施設はありません</p>
-
-<% end %>
+</div>

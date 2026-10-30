@@ -1,0 +1,59 @@
+
+/*全体*/
+.rooms-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 20px 20px;
+}
+
+/*施設カード*/
+
+.rooms-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.rooms-card {
+  position: relative;
+  background-color: rgb(253, 248, 238);
+
+  border-radius: 20px;
+}
+
+.rooms-card img {
+  border-radius: 20px 20px 0 0;
+  height: 250px;
+}
+
+.rooms-bio {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rooms-info {
+  padding: 20px;
+}
+
+.rooms-info-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rooms-fee {
+  font-size: 30px;
+  color: rgb(255, 110, 62);
+}
+
+.rooms-show{
+  padding: 15px;
+  text-decoration: none;
+  border-radius: 15px;
+
+  color: white;
+  background-color: rgb(255, 110, 62);
+}

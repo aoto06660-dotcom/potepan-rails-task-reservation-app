@@ -1,21 +1,27 @@
-<h2>設定</h2>
+<div class="container-fluid px-4 py-5">
 
-<div>
-  <div>
-    <h2><%= link_to "アカウント", account_path %></h2>
-    <h2><%= link_to "プロフィール", profile_path %></h2>
-  </div>
-  
-  <div>
-    <p>メールアドレス</p>
-    <p><%= @user.email %></p>
-  </div>
+  <div class="row g-3">
 
-  <div>
-    <p>パスワード</p>
-    <p>*********</p>
-  </div>
+    <div class="col-md-3">
+      <%= render "shared/settings_sidebar", active_menu: "account" %>
+    </div>
 
+    <div class="col-md-9">
+
+      <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+        <h2>アカウント</h2>
+        <%= link_to "編集", edit_user_registration_path, class: "text-decoration-none" %>
+      </div>
+    
+      <div class="account-info-row">
+        <p>メールアドレス</p>
+        <p><%= @user.email %></p>
+      </div>
+
+      <div class="account-info-row">
+        <p>パスワード</p>
+        <p>*********</p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "編集", edit_user_registration_path %>

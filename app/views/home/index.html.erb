@@ -1,9 +1,47 @@
-<h1>宿泊予約</h1>
+<section class="home-hero">
 
-<div>
-  <%= form_with url: rooms_path, method: :get do |f| %>
-    <%= f.text_field :address, placeholder: "エリア名を入力" %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>
+  <img
+    class="top-img"
+    src="https://cdn.pakutaso.com/shared/img/thumb/onsenIMG_6459_TP_V.jpg"
+    alt="トップ画像" />
+
+  <div class="home-content">
+    <h1>旅をしよう</h1>
+
+    <%= form_with url: rooms_path, method: :get, 
+                  class: "home-search" do |f| %>
+      <%= f.text_field :address, placeholder: "エリア名を入力" %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+</section>
+
+<section class="popular-areas">
+  <h2>人気エリア</h2>
+  
+  <div class="area-list">
+
+    <%= link_to rooms_path(address: "東京"), class: "area-card" do %>
+      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/PEZ_tokyotowermachi_TP_V4.jpg", alt: "東京" %>
+      <h3>東京</h3>
+    <% end %>
+    
+    <%= link_to rooms_path(address: "京都"), class: "area-card" do %>
+      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/zubottyDSC07525-254_TP_V.jpg", alt: "京都" %>
+      <h3>京都</h3>
+    <% end %>
+    
+    <%= link_to rooms_path(address: "大阪"), class: "area-card" do %>
+      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/fujiko11621122600291427_TP_V4.jpg", alt: "大阪" %>
+      <h3>大阪</h3>
+    <% end %>
+    
+    <%= link_to rooms_path(address: "札幌"), class: "area-card" do %>
+      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/BOB20614z000_TP_V.jpg", alt: "札幌" %>
+      <h3>札幌</h3>
+    <% end %>
+
+  </div>
+</section>
+
 

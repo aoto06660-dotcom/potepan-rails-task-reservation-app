@@ -1,0 +1,118 @@
+.room-show-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.room-show-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.room-back {
+  display: inline-block;
+  margin-bottom: 10px;
+
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.room-show-image {
+  flex: 0 0 40%;
+}
+
+.room-show-image img {
+  display: block;
+  width: 90%;
+  object-fit: cover;
+}
+
+.room-show-info {
+  flex: 1;
+  min-width: 0;
+  background-color: rgb(252, 243, 227);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+
+.room-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.room-show-header h2 {
+  font-size: 30px;
+  color: rgb(139, 139, 139);
+}
+
+.room-show-header p {
+  font-size: 36px;
+  font-weight: bold;
+  color: rgb(247, 153, 119);
+  margin: 0;
+}
+
+.room-show-address {
+  font-size: 16px;
+  color: rgb(162, 162, 162);
+}
+
+.room-show-bio {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 30px 0;
+}
+
+/*予約フォーム*/
+
+.reservation-form {
+  margin-top: 40px;
+}
+
+.reservation-fields {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.reservation-field {
+  min-width: 0;
+}
+
+.reservation-field label {
+  display: block;
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.reservation-field input {
+  width: 100%;
+  padding: 15px 20px;
+}
+
+/*予約ボタン*/
+.reservation-button {
+  display: block;
+  width: 100%;
+  margin-top: 35px;
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+  box-sizing: border-box;
+
+  background-color: rgb(243, 153, 119);
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.reservation-button:hover {
+  opacity: 0.85;
+}

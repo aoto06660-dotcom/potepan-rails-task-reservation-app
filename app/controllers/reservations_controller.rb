@@ -33,6 +33,14 @@ class ReservationsController < ApplicationController
     @reservations = current_user.reservations.includes(:room)
   end
 
+  def destroy
+    @reservation = current_user.reservations.find(params[:id])
+
+    @reservation.destroy!
+
+    redirect_to reservations_path, notice: "予約を削除しました"
+  end
+
 
   private
 

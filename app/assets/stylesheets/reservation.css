@@ -1,0 +1,27 @@
+.reservation-index-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0;
+  padding: 50px 30px;
+  box-sizing: border-box;
+}
+
+.reservation-index-container h2 {
+  font-size: 28px;
+}
+
+.reservation-room-image {
+  width: 140px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.reservation-bio {
+  min-width: 250px;
+  max-width: 500px;
+}
+
+.reservation-index-container td,
+.reservation-index-container th {
+  padding: 15px;
+}

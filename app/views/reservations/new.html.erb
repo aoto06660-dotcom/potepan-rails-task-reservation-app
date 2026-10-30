@@ -1,21 +1,25 @@
-<h3><%= @room.name %></h3>
+<div>
 
-<%= form_with model: [@room, @reservation] do |f| %>
-  <div>
-    <%= f.label :check_in, "チェックイン" %>
-    <%= f.date_field  :check_in %>
-  </div>
+  <h3><%= @room.name %></h3>
 
-  <div>
-    <%= f.label :check_out, "チェックアウト" %>
-    <%= f.label_field :check_out %>
-  </div>
+  <%= form_with model: [@room, @reservation] do |f| %>
+    <div>
+      <%= f.label :check_in, "チェックイン" %>
+      <%= f.date_field  :check_in %>
+    </div>
 
-  <div>
-    <%= f.label :guest, "人数" %>
-    <%= f.number_field :guest $>
-  </div>
+    <div>
+      <%= f.label :check_out, "チェックアウト" %>
+      <%= f.label_field :check_out %>
+    </div>
 
-  <%= form.submit "予約する" %>
-  
-<% end %>
+    <div>
+      <%= f.label :guest, "人数" %>
+      <%= f.number_field :guest $>
+    </div>
+
+    <%= form.submit "予約する" %>
+    
+  <% end %>
+
+</div>

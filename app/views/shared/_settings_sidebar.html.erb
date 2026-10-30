@@ -1,0 +1,13 @@
+<div class="list-group setting-sidebar">
+
+  <h2>設定</h2>
+
+  <%= link_to "アカウント",
+        account_path,
+        class: "list-group-item list-group-item-action #{"settings-active" if active_menu == "account"}" %>
+  
+  <%= link_to "プロフィール",
+        profile_path,
+        class: "list-group-item list-group-item-action #{"settings-active" if active_menu == "profile"}" %>
+  
+</div>
