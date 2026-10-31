@@ -15,7 +15,9 @@
       <div class="profile-info-row">
         <p>アイコン画像</p>
         <% if @user.avatar.attached? %>
-          <%= image_tag @user.avatar, width: 150 %>
+          <%= image_tag @user.avatar, width: 100 %>
+        <% else %>
+          <%= image_tag "profile_no_image.png", width: 100 %>
         <% end %>
       </div>
 

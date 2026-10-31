@@ -1,9 +1,8 @@
 <section class="home-hero">
 
-  <img
-    class="top-img"
-    src="https://cdn.pakutaso.com/shared/img/thumb/onsenIMG_6459_TP_V.jpg"
-    alt="トップ画像" />
+  <%= image_tag "top_image.webp",
+    class: "top-img",
+    alt: "トップ画像" %>
 
   <div class="home-content">
     <h1>旅をしよう</h1>
@@ -22,22 +21,22 @@
   <div class="area-list">
 
     <%= link_to rooms_path(address: "東京"), class: "area-card" do %>
-      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/PEZ_tokyotowermachi_TP_V4.jpg", alt: "東京" %>
+      <%= image_tag "tokyo.jpg", alt: "東京" %>
       <h3>東京</h3>
     <% end %>
     
     <%= link_to rooms_path(address: "京都"), class: "area-card" do %>
-      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/zubottyDSC07525-254_TP_V.jpg", alt: "京都" %>
+      <%= image_tag "kyoto.jpg", alt: "京都" %>
       <h3>京都</h3>
     <% end %>
     
     <%= link_to rooms_path(address: "大阪"), class: "area-card" do %>
-      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/fujiko11621122600291427_TP_V4.jpg", alt: "大阪" %>
+      <%= image_tag "osaka.jpg", alt: "大阪" %>
       <h3>大阪</h3>
     <% end %>
     
     <%= link_to rooms_path(address: "札幌"), class: "area-card" do %>
-      <%= image_tag "https://cdn.pakutaso.com/shared/img/thumb/BOB20614z000_TP_V.jpg", alt: "札幌" %>
+      <%= image_tag "sapporo.jpg", alt: "札幌" %>
       <h3>札幌</h3>
     <% end %>
 
