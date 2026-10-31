@@ -11,7 +11,9 @@ class ReservationsController < ApplicationController
     @reservation = current_user.reservations.build(reservation_params)
     @reservation.room = @room
 
-    unless @reservation.valid?
+    if @reservation.valid?
+      render :confirm
+    else
       render "rooms/show", status: :unprocessable_entity
     end
   end
@@ -25,7 +27,7 @@ class ReservationsController < ApplicationController
     if @reservation.save
       redirect_to reservations_path, notice: "予約しました"
     else
-      render :confirm, status: :unprocessable_entity
+      render "rooms/show", status: :unprocessable_entity
     end
   end
 

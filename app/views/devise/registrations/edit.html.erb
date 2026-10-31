@@ -47,6 +47,16 @@
 
       <% end %>
 
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger mt-3">
+          <ul class="mb-0">
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>

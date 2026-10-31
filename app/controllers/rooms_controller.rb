@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
     if @room.save
       redirect_to room_path(@room), notice: "施設を登録しました"
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 

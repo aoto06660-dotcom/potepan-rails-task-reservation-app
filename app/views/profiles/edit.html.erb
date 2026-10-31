@@ -35,11 +35,13 @@
       <% end %>
 
       <% if @user.errors.any? %>
-        <ul>
-          <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
+        <div class="alert alert-danger mt-3">
+          <ul class="mb-0">
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
     </div>
   </div>

@@ -1,4 +1,4 @@
-<%= render "search_form" %>
+<%= render "rooms/search_form" %>
 
 <div class="room-show-container">
  
@@ -53,6 +53,16 @@
                       class: "reservation-button" %>
         <% end %>
       
+      <% end %>
+
+      <% if @reservation&.errors&.any? %>
+        <div class="alert alert-danger mt-4">
+          <ul class="mb-0">
+            <% @reservation.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
       <% end %>
 
     </div>
