@@ -1,4 +1,29 @@
 Rails.application.routes.draw do
+  resources :rooms do
+    collection do
+      get :my_rooms
+    end
+  
+
+    resources :reservations, only: [:create] do
+      collection do
+        post :confirm
+      end
+    end
+  end
+
+  resources :reservations, only: [:index]
+
+  resource :account, only: [:show]
+  
+  
+  devise_for :users
+
+  get "home/index"
+  root "home#index"
+
+  resource :profile, only: [:edit, :update, :show]
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -11,4 +36,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  delete "/reservations/:id", to: "reservations#destroy", as: :reservation
 end

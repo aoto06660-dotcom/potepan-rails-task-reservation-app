@@ -1,0 +1,55 @@
+<div class="container px-5 py-4 d-flex flex-column justify-content-center align-items-center confirm-page">
+
+  <h2>予約内容の確認</h2>
+
+  <div class="confirm-container">
+    <div class="confirm-room">
+      <p>チェックイン</p>
+      <p><%= @reservation.check_in.strftime("%Y/%m/%d") %></p>
+    </div>
+
+    <div class="confirm-room">
+      <p>チェックアウト</p>
+      <p><%= @reservation.check_out.strftime("%Y/%m/%d") %></p>
+    </div>
+
+    <div class="confirm-room">
+      <p>日数</p>
+      <p><%= (@reservation.check_out - @reservation.check_in).to_i %>日</p>
+    </div>
+
+    <div class="confirm-room">
+      <p>人数</p>
+      <p><%= @reservation.guest %>人</p>
+    </div>
+
+    <div class="confirm-room confirm-total">
+      <% nights = (@reservation.check_out - @reservation.check_in).to_i %>
+      <% total_price = nights * @reservation.room.fee * @reservation.guest %>
+
+      <p>お支払い金額</p>
+      <p>¥<%= total_price %></p>
+    </div>
+
+    <p>上記内容で正しければ「確定」ボタンを押してください<p>
+
+    <%= form_with model: @reservation,
+                  url: room_reservations_path(@room),
+                  method: :post,
+                  data: { turbo: false } do |f| %>
+      
+      <%= f.hidden_field :check_in %>
+      <%= f.hidden_field :check_out %>
+      <%= f.hidden_field :guest %>
+
+      <%= f.submit "予約を確定", class: "btn confirm-submit w-100 mb-4" %>
+      
+      <%= link_to "キャンセル",
+            room_path(@room),
+            class:"btn btn-outline-secondary w-100" %>
+    
+    <% end %>
+  </div>
+</div>
+
+

@@ -1,0 +1,12 @@
+<div class="rooms-search">
+  <%= form_with url: rooms_path, method: :get, class: "search-form" do |f| %>
+    <%= f.text_field :address,
+                      value: params[:address],
+                      placeholder: "エリア名を入力" %>
+
+    <%= f.text_field :keyword,
+                      value: params[:keyword],
+                      placeholder: "キーワード名を入力" %>
+    <%= f.submit "検索" %>
+  <% end %>
+</div>

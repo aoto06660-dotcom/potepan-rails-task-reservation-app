@@ -1,0 +1,37 @@
+<div class="container-fluid px-4 py-5">
+
+  <div class="row g-3">
+
+    <div class="col-md-3">
+      <%= render "shared/settings_sidebar", active_menu: "profile" %>
+    </div>
+
+    <div class="col-md-9">
+      <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
+        <h2 class="mb-0">プロフィール</h2>
+        <%= link_to "編集", edit_profile_path, class: "text-decoration-none" %>
+      </div>
+
+      <div class="profile-info-row">
+        <p>アイコン画像</p>
+        <% if @user.avatar.attached? %>
+          <%= image_tag @user.avatar, width: 100 %>
+        <% else %>
+          <%= image_tag "profile_no_image.png", width: 100 %>
+        <% end %>
+      </div>
+
+      <div class="profile-info-row">
+        <p>名前</p>
+        <p><%= @user.name %></p>
+      </div>
+
+      <div class="profile-info-row">
+        <p>自己紹介</p>
+        <p><%= @user.bio %></p>
+      </div>
+
+    </div>
+  </div>
+</div>
+

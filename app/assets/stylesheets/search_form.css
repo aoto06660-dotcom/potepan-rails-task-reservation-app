@@ -1,0 +1,29 @@
+/*検索フォーム*/
+.rooms-search {
+  margin-bottom: 40px;
+  background-color: rgb(226, 225, 225);
+  padding: 30px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.search-form input[type="text"] {
+  flex: 0 250px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.search-form input[type="submit"] {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  
+  background-color: rgb(165, 165, 165);
+}

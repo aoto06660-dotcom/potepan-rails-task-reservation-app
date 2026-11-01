@@ -1,0 +1,37 @@
+.account-info-row,
+.profile-info-row,
+.profile-edit-row {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.account-info-row p,
+.profile-info-row p {
+  margin-top: 30px;
+}
+
+.account-info-row p:first-child,
+.profile-info-row p:first-child {
+  font-weight: bold;
+}
+
+.profile-edit-row input:not([type="file"]),
+.profile-edit-row textarea{
+  width: 100%;
+  min-width: 0;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.profile-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 20px;
+}
+
+
+

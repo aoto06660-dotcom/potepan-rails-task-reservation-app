@@ -1,0 +1,63 @@
+<div class="container-fluid px-4 py-5">
+
+  <div class="row g-3">
+
+    <div class="col-md-3">
+      <%= render "shared/settings_sidebar", active_menu: "account" %>
+    </div>
+
+    <div class="col-md-9">
+      
+      <h2 class="mb-4 border-bottom pb-3 mb-4">アカウント</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="profile-edit-row">
+          <%= f.label :email, "メールアドレス", class: "form-label fw-bold" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "変更後メールドレスを入力", class: "form-control" %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="profile-edit-row">
+          <%= f.label :password, "変更後パスワード" %>
+          <%= f.password_field :password,
+                autocomplete: "new-password",
+                placeholder: "変更後パスワードを入力",
+                class: "form-control" %>
+        </div>
+
+        <div class="profile-edit-row">
+          <%= f.label :password_confirmation, "確認用パスワード" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "変更後パスワードを入力", class: "form-control" %>
+        </div>
+
+        <div class="profile-edit-row">
+          <%= f.label :current_password, "現在のパスワード" %>
+          <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワードを入力", class: "form-control" %>
+        </div>
+
+        <div class="profile-edit-actions">
+          <%= link_to "キャンセル", account_path, class: "text-decoration-none" %>
+          <%= f.submit "保存", class: "btn btn-danger" %>
+        </div>
+
+      <% end %>
+
+      <% if @user.errors.any? %>
+        <div class="alert alert-danger mt-3">
+          <ul class="mb-0">
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+    

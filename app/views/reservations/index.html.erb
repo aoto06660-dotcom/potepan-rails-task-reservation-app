@@ -1,0 +1,100 @@
+<div class="reservation-index-container px-4 py-5">
+
+  <h2 class="mb-4">予約済み一覧</h2>
+
+  <div class="table-responsive">
+
+    <table class="table table hover align-middle">
+
+      <thead>
+        <tr class="text-nowrap">
+          <th>画像</th>
+          <th>施設名</th>
+          <th>紹介文</th>
+          <th>合計料金</th>
+          <th>チェックイン</th>
+          <th>チェックアウト</th>
+          <th>予約確定日時</th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <% nights = (reservation.check_out - reservation.check_in).to_i %>
+          <% total_price = nights * reservation.room.fee * reservation.guest %>
+
+          <tr>
+            <td>
+              <% if reservation.room.image.attached? %>
+                <%= image_tag resevation.room.image, class: "reservation-room-image" %>
+              <% else %>
+                <%= image_tag "no_image.png", class: "reservation-room-image" %>
+              <% end %>
+            </td>
+
+            <td class="text-nowrap">
+              <%= link_to reservation.room.name, room_path(reservation.room) %>
+            </td>
+
+            <td class="reservation-bio">
+              <%= reservation.room.bio %>
+            </td>
+
+            <td>
+              ¥<%= number_with_delimiter(total_price) %>
+            </td>
+
+            <td>
+              <%= reservation.check_in.strftime("%Y/%m/%d") %>
+            </td>
+
+            <td>
+              <%= reservation.check_out.strftime("%Y/%m/%d") %>
+            </td>
+
+            <td class="text-nowrap">
+              <%= reservation.created_at.strftime("%Y/%m/%d %H:%M") %>
+            </td>
+
+            <td>
+              <div class="dropdown">
+
+              <button
+                class="btn btn-light"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="予約の操作"
+              >
+                &#8942;
+
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                  <%= button_to "予約を削除",
+                        reservation_path(reservation),
+                        method: :delete,
+                        class: "dropdown-item text-danger",
+                        form: {
+                          data: {
+                            turbo_confirm: "本当に削除しますか？"
+                          }
+                        } %>
+                </li>
+              </ul>
+              
+              </div>
+              
+          </td>
+        </tr>
+
+        <% end %>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

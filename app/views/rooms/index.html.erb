@@ -1,0 +1,35 @@
+<%= render "search_form" %>
+
+<div class="rooms-container">
+
+  <h2 class="rooms-count"><%= @rooms.count %>件が見つかりました</h2>
+
+  <div class="rooms-list">
+    <% @rooms.each do |room| %>
+
+      <div class="rooms-card">
+        <% if room.image.attached? %>
+          <%= image_tag room.image, class: "room-image", width: 400 %>
+        <% else %>
+          <%= image_tag "no_image.png", class: "room-image", alt: "画像未登録", width: 400 %>
+        <% end %>
+
+        <div class="rooms-info">
+          <h3 style="font-size: 25px"><%= room.name %></h3>
+          <p style="font-size: 13px"><%= room.address %></p>
+          <p class="rooms-bio"><%= room.bio %></p>
+          <div class="rooms-info-bottom">
+            <p class="rooms-fee">¥<%= room.fee %>~</p>
+
+            <%= link_to "詳細はこちら", room_path(room), class: "rooms-show" %>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+                  

@@ -1,0 +1,70 @@
+.room-form-title {
+  text-align: center;
+}
+
+.room-edit-form-title {
+  text-align: center;
+}
+
+.room-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.room-form-card {
+  max-width: 700px;
+  width: 100%;
+  padding: 15px;
+}
+
+.room-form-field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.room-form-field label {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.room-form-field input[type="text"],
+.room-form-field input[type="number"] {
+  flex: 1;
+  padding: 10px;
+  min-width: 0;
+}
+
+.room-form-field textarea {
+  flex: 1;
+  padding: 30px;
+}
+
+.room-form-field input[type="file"] {
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.room-form-actions p{
+  text-align: center;
+}
+
+.room-form-actions input {
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 50px;
+  cursor: pointer;
+
+  background-color: rgb(247, 156, 122);
+  color: white;
+}
+
+.room-form-cancel {
+  text-decoration: none;
+  border-bottom: solid;
+
+  color: black;
+}
