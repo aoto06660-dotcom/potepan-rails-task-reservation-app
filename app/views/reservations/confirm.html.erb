@@ -5,12 +5,12 @@
   <div class="confirm-container">
     <div class="confirm-room">
       <p>チェックイン</p>
-      <p><%= @reservation.check_in %></p>
+      <p><%= @reservation.check_in.strftime("%Y/%m/%d") %></p>
     </div>
 
     <div class="confirm-room">
       <p>チェックアウト</p>
-      <p><%= @reservation.check_out %></p>
+      <p><%= @reservation.check_out.strftime("%Y/%m/%d") %></p>
     </div>
 
     <div class="confirm-room">
